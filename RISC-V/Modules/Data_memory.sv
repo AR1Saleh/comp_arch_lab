@@ -7,11 +7,11 @@ module Data_memory(
 
 int i;
 logic [31:0] data_mem [63:0];
-assign rdata = (rd_en) ? data_mem[addr]: 32'b0;
+assign rdata = (rd_en) ? data_mem[addr[5:0]]: 32'b0;
 
 always @(negedge clk, negedge rst_n) begin
 if (!rst_n) begin
-  for (i=0;i<32;i++) begin
+  for (i=0;i<64;i++) begin
     data_mem[i] <= 32'b0;
   end  
 end

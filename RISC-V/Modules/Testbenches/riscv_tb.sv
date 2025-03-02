@@ -3,9 +3,11 @@ module riscv_tb;
   bit         clk, rst_n;
   
   initial begin
+    $readmemh("instructions.txt" , dut.Instr_Mem.mem);
+
     reset_seq; 
     
-    $readmemh("instructions.txt" , dut.Instr_Mem.mem); //monitor;
+    //monitor;
     //$writememh("check.txt" , dut.Instr_Mem.mem);
 
     repeat(10) @(posedge clk); 
@@ -60,7 +62,7 @@ module riscv_tb;
   task automatic reset_seq;
     begin
       rst_n = 0;  
-      #50;
+      #20;
       rst_n = 1;   
     end
   endtask
