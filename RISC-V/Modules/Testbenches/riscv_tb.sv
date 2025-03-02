@@ -1,15 +1,17 @@
 module riscv_tb;
 
-  bit         clk, rst_n, wr_en;
-  logic [31:0] instr, waddr;
+  bit         clk, rst_n;
   
   initial begin
     reset_seq; 
-    fork
-        $readmemh("instructions.txt" , dut.Instr_Mem.mem); 
-        $writememh("out.txt" , dut.Reg.regfile);
-        monitor;
-    join
+    
+    $readmemh("instructions.txt" , dut.Instr_Mem.mem); //monitor;
+    //$writememh("check.txt" , dut.Instr_Mem.mem);
+
+    repeat(10) @(posedge clk); 
+
+    $writememh("output.txt" , dut.Reg.regfile);
+
     $stop;
   end
   
@@ -17,8 +19,6 @@ module riscv_tb;
   task automatic monitor;
     begin
       #10;
-      //$display("x1: %d", dut.Reg.regfile[1]);
-      //$display("x2: %d", dut.Reg.regfile[2]);
       $display("x3: %d", dut.Reg.regfile[3]);
       $display("\n");
       $stop;
@@ -55,6 +55,7 @@ module riscv_tb;
 
   endtask
   */
+
   // Reset task: uses active-low reset behavior.
   task automatic reset_seq;
     begin

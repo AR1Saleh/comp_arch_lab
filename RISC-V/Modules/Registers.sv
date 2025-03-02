@@ -11,9 +11,9 @@ module Registers(
     assign reg_data1 = regfile[reg_addr1];
     assign reg_data2 = regfile[reg_addr2];
    
-   always @(negedge clk) begin
+    always @(negedge clk) begin
         regfile[0] <= 32'b0;
-   end
+    end
    
     always @(negedge clk, negedge rst_n) begin
         if (!rst_n) begin

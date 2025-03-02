@@ -92,7 +92,7 @@ module riscv(
         .zero(zero)
     );
 
-    Add Ext_MUX (
+    Add Offset (
         .operand1(pc_current),
         .operand2(imm_val),
         .result(addresult)
@@ -116,8 +116,8 @@ module riscv(
 
     Mux_2x1 Reg_MUX (
         .MemtoReg(memtoreg),
-        .in1(read),
-        .in2(ALUresult),
+        .in1(ALUresult),
+        .in2(read),
         .out(wr_data)
     ); 
 

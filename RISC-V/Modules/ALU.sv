@@ -7,9 +7,9 @@ module ALU(
     );
     always_comb begin
         case (ALUoperation)
-        4'b0000: ALUresult = operand1 + operand2;
+        4'b0000: ALUresult = operand1 & operand2;
         4'b0001: ALUresult = operand1 | operand2;
-        4'b0010: ALUresult = operand1 & operand2;
+        4'b0010: ALUresult = operand1 + operand2;
         4'b0110: ALUresult = operand1 - operand2;
         default: ALUresult = 32'b0;
         endcase
