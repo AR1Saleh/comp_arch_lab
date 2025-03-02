@@ -10,7 +10,7 @@ module riscv_tb;
     //monitor;
     //$writememh("check.txt" , dut.Instr_Mem.mem);
 
-    repeat(10) @(posedge clk); 
+    repeat(20) @(posedge clk); 
 
     $writememh("output.txt" , dut.Reg.regfile);
 
