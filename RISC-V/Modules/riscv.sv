@@ -34,6 +34,7 @@ module riscv(
         .instr(instr)
     );
 
+    logic           brc;
     logic [31:0]    if_reg;
     always_ff @(posedge clk) begin
         if (!rst_n) begin
@@ -149,7 +150,7 @@ module riscv(
                     bran_reg;               
                     
     always_ff @(posedge clk) begin
-        if (!rst_n) begin
+        if (!rst_n | brc) begin
             zero_reg        <= #1 0;
             bran_reg        <= #1 0;
 
@@ -167,7 +168,6 @@ module riscv(
         end
     end
 
-    logic           brc;
     assign brc = bran_reg & zero_reg;
 
     Mux_2x1 Br_MUX (
@@ -176,6 +176,7 @@ module riscv(
         .in2(add_reg),
         .out(pc_next)
     );   
+
     /*
     logic           fA, fB;
     forward_unit inst_fwd_unit (
@@ -202,6 +203,7 @@ module riscv(
         .out(fBreg)
     );
     */
+
     logic [31:0]    read;
     Data_memory Data_Mem (
         .clk(clk), .wr_en(mem_wr), .rd_en(mem_rd),

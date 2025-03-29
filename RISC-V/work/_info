@@ -137,6 +137,14 @@ R0
 R1
 R0
 R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
 !s11f vlog 2024.1 2024.02, Feb  1 2024
 13
 !s112 1.1
@@ -146,10 +154,10 @@ R1
 cModel Technology
 dE:/Software/Questasim/examples
 T_opt
-!s110 1743239849
-V_RY<nJFWZ^PPK?mXm;dQY0
+!s110 1743241335
+V45J7<1RNXV_ARWi]bn;Z50
 04 8 4 work riscv_tb fast 0
-=33-b4692180d6ee-67e7baa9-f0-236c
+=37-b4692180d6ee-67e7c077-121-236c
 R1
 !s12f OEM100
 !s12b OEM100
@@ -470,23 +478,23 @@ n@registers
 vriscv
 2E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/riscv.sv
 R3
-!s110 1743239816
+!s110 1743241333
 !i10b 1
-!s100 <?>h5Z0`<lk8c:eSl6gFD2
-I;6m?hOjMW4F;o6<nmIoV80
+!s100 dQRF:>glfCP?_hn;e87eh3
+IYG]i4^FcG;OE@JO?579E=3
 S1
 R5
-w1743239683
+w1743241329
 8E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/riscv.sv
 FE:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/riscv.sv
-!i122 353
-L0 1 220
+!i122 358
+L0 1 222
 R7
 R8
 r1
 !s85 0
 31
-!s108 1743239816.000000
+!s108 1743241332.000000
 !s107 E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/riscv.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/riscv.sv|
 !i113 0
