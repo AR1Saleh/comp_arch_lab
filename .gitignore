@@ -6,7 +6,4 @@ RISC-V/*.wlf/
 
 RISC-V/datapath/*.bkp
 
-RISC-V/instructions.txt
-RISC-V/output.txt
-
 
