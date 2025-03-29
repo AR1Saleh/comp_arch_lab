@@ -18,6 +18,9 @@ always_comb begin : forward_unit
             fwd_B       = 1;     
         end 
     end
+    else begin
+        fwd_A = 0; fwd_B = 0;
+    end
 end
 
 endmodule

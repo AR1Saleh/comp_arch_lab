@@ -15,7 +15,12 @@ module riscv(
 
     logic [31:0]        f_pc;
     always_ff @(posedge clk) begin 
-        f_pc            <= #1 pc_current;        
+        if (!rst_n) begin
+            f_pc            <= #1 0;
+        end
+        else begin
+            f_pc            <= #1 pc_current;    
+        end      
     end
 
     PC_Adder PC_Adder (
@@ -31,7 +36,12 @@ module riscv(
 
     logic [31:0]    if_reg;
     always_ff @(posedge clk) begin
-        if_reg          <= #1 instr;   
+        if (!rst_n) begin
+            if_reg          <= #1 0;
+        end
+        else begin
+            if_reg          <= #1 instr; 
+        end  
     end
 
     logic           branch,
@@ -62,11 +72,20 @@ module riscv(
                     mr_reg;
 
     always_ff @(posedge clk) begin
-        waddr           <= #1 if_reg[11:7];
-        reg_wr          <= #1 regwrite;
-        mem_rd          <= #1 memread;
-        mem_wr          <= #1 memwrite;
-        mr_reg          <= #1 memtoreg;
+        if (!rst_n) begin    
+            waddr           <= #1 0;
+            reg_wr          <= #1 0;
+            mem_rd          <= #1 0;
+            mem_wr          <= #1 0;
+            mr_reg          <= #1 0;
+        end
+        else begin
+            waddr           <= #1 if_reg[11:7];
+            reg_wr          <= #1 regwrite;
+            mem_rd          <= #1 memread;
+            mem_wr          <= #1 memwrite;
+            mr_reg          <= #1 memtoreg;
+        end
     end
 
     logic [31:0]    wr_data,
@@ -109,7 +128,7 @@ module riscv(
     logic           zero;
     logic [31:0]    ALUresult;
     ALU ALU (
-        .operand1(fAreg1),
+        .operand1(fAreg),
         .operand2(imm_out),
         .ALUoperation(operation),
         .ALUresult(ALUresult),
@@ -130,12 +149,22 @@ module riscv(
                     bran_reg;               
                     
     always_ff @(posedge clk) begin
-        zero_reg        <= #1 zero;
-        bran_reg        <= #1 branch;
+        if (!rst_n) begin
+            zero_reg        <= #1 0;
+            bran_reg        <= #1 0;
 
-        alu_reg         <= #1 ALUresult;
-        add_reg         <= #1 addresult;  
-        wrd_mem         <= #1 reg_data2;  
+            alu_reg         <= #1 0;
+            add_reg         <= #1 0;  
+            wrd_mem         <= #1 0;
+        end
+        else begin
+            zero_reg        <= #1 zero;
+            bran_reg        <= #1 branch;
+
+            alu_reg         <= #1 ALUresult;
+            add_reg         <= #1 addresult;  
+            wrd_mem         <= #1 reg_data2;  
+        end
     end
 
     logic           brc;
@@ -143,7 +172,7 @@ module riscv(
 
     Mux_2x1 Br_MUX (
         .MemtoReg(brc),
-        .in1(pc_4),
+        .in1(result),
         .in2(add_reg),
         .out(pc_next)
     );   
