@@ -135,6 +135,8 @@ R0
 R1
 R0
 R1
+R0
+R1
 !s11f vlog 2024.1 2024.02, Feb  1 2024
 13
 !s112 1.1
@@ -144,10 +146,10 @@ R1
 cModel Technology
 dE:/Software/Questasim/examples
 T_opt
-!s110 1743239651
-VJhd3gA5:5P6n0342nSCLD0
+!s110 1743239849
+V_RY<nJFWZ^PPK?mXm;dQY0
 04 8 4 work riscv_tb fast 0
-=31-b4692180d6ee-67e7b9e3-1fd-236c
+=33-b4692180d6ee-67e7baa9-f0-236c
 R1
 !s12f OEM100
 !s12b OEM100
@@ -468,23 +470,23 @@ n@registers
 vriscv
 2E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/riscv.sv
 R3
-!s110 1743239650
+!s110 1743239816
 !i10b 1
 !s100 <?>h5Z0`<lk8c:eSl6gFD2
 I;6m?hOjMW4F;o6<nmIoV80
 S1
 R5
-w1743239645
+w1743239683
 8E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/riscv.sv
 FE:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/riscv.sv
-!i122 352
+!i122 353
 L0 1 220
 R7
 R8
 r1
 !s85 0
 31
-!s108 1743239650.000000
+!s108 1743239816.000000
 !s107 E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/riscv.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/riscv.sv|
 !i113 0
@@ -493,23 +495,23 @@ R2
 vriscv_tb
 2E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/Testbenches/riscv_tb.sv
 R3
-!s110 1743239388
+!s110 1743239846
 !i10b 1
-!s100 JD27DOeNZCie@?YZS3_MQ1
-IGmZlC_MHD7M8=6OZI5jC=2
+!s100 B;fQ^VTAm_YoCQhLR??A12
+IS7J0RGHONAFn[WW^G]b?<2
 S1
 R5
-w1743239384
+w1743239842
 8E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/Testbenches/riscv_tb.sv
 FE:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/Testbenches/riscv_tb.sv
-!i122 350
+!i122 354
 L0 1 38
 R7
 R8
 r1
 !s85 0
 31
-!s108 1743239388.000000
+!s108 1743239846.000000
 !s107 E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/Testbenches/riscv_tb.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/Testbenches/riscv_tb.sv|
 !i113 0

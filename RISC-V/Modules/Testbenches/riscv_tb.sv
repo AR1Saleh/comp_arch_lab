@@ -7,7 +7,7 @@ module riscv_tb;
 
     reset_seq; 
 
-    repeat(6) @(posedge clk) begin
+    repeat(20) @(posedge clk) begin
         $display("x10: %d\n", dut.Reg.regfile[10]);
         $display("x11: %d\n", dut.Reg.regfile[11]);
         $display("x12: %d\n", dut.Reg.regfile[12]);

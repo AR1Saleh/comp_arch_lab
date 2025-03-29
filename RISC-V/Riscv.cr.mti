@@ -19,6 +19,13 @@ QuestaSim-64 vlog 2024.1 Compiler 2024.02 Feb  1 2024
 Top level modules:
 	ALU_Ctrl
 
+} {} {}} {E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/riscv.sv} {1 {vlog -work work -vopt -sv -stats=none {E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/riscv.sv}
+QuestaSim-64 vlog 2024.1 Compiler 2024.02 Feb  1 2024
+-- Compiling module riscv
+
+Top level modules:
+	riscv
+
 } {} {}} {E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/Data_memory.sv} {1 {vlog -work work -vopt -sv -stats=none {E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/Data_memory.sv}
 QuestaSim-64 vlog 2024.1 Compiler 2024.02 Feb  1 2024
 -- Compiling module Data_memory
@@ -39,13 +46,6 @@ QuestaSim-64 vlog 2024.1 Compiler 2024.02 Feb  1 2024
 
 Top level modules:
 	PC_Adder
-
-} {} {}} {E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/Testbenches/riscv_tb.sv} {1 {vlog -work work -vopt -sv -stats=none {E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/Testbenches/riscv_tb.sv}
-QuestaSim-64 vlog 2024.1 Compiler 2024.02 Feb  1 2024
--- Compiling module riscv_tb
-
-Top level modules:
-	riscv_tb
 
 } {} {}} {E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/controller.sv} {1 {vlog -work work -vopt -sv -stats=none {E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/controller.sv}
 QuestaSim-64 vlog 2024.1 Compiler 2024.02 Feb  1 2024
