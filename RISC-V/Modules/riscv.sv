@@ -53,7 +53,7 @@ module riscv(
 
     logic [1:0]     alu_op;
     controller Ctrl (
-        .opcode(instr[6:0]),
+        .opcode(if_reg[6:0]),
 
         .branch(branch),
         .alu_src(alu_src),
@@ -65,7 +65,7 @@ module riscv(
         .alu_op(alu_op)
     );
     
-    logic [31:0]    waddr;
+    logic [4:0]     waddr;
     logic           reg_wr,
                     mem_rd,
                     mem_wr,
@@ -105,7 +105,7 @@ module riscv(
 
     logic [31:0]    imm_val;
     imm_gen immgen (
-        .instr(instr),
+        .instr(if_reg),
         .imm_val(imm_val)
     );
 
@@ -116,11 +116,11 @@ module riscv(
         .operation(operation)
     );
 
-    logic [31:0]    fAreg, fBreg;
+    //logic [31:0]    fAreg, fBreg;
     logic [31:0]    imm_out;
     Mux_2x1 Imm_MUX (
         .MemtoReg(alu_src),
-        .in1(fBreg),
+        .in1(reg_data2),
         .in2(imm_val),
         .out(imm_out)
     );
@@ -128,7 +128,7 @@ module riscv(
     logic           zero;
     logic [31:0]    ALUresult;
     ALU ALU (
-        .operand1(fAreg),
+        .operand1(reg_data1),
         .operand2(imm_out),
         .ALUoperation(operation),
         .ALUresult(ALUresult),
@@ -176,7 +176,7 @@ module riscv(
         .in2(add_reg),
         .out(pc_next)
     );   
-
+    /*
     logic           fA, fB;
     forward_unit inst_fwd_unit (
         .regwr(reg_wr),
@@ -201,7 +201,7 @@ module riscv(
         .in2(wr_data),
         .out(fBreg)
     );
-
+    */
     logic [31:0]    read;
     Data_memory Data_Mem (
         .clk(clk), .wr_en(mem_wr), .rd_en(mem_rd),
