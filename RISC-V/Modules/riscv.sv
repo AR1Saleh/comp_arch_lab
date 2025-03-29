@@ -15,18 +15,13 @@ module riscv(
 
     logic [31:0]        f_pc;
     always_ff @(posedge clk) begin 
-        f_pc        <= #1 pc_current;        
+        f_pc            <= #1 pc_current;        
     end
 
     PC_Adder PC_Adder (
-        .operand1(f_pc),
+        .operand1(pc_current),
         .result(result)
-    );
-                    
-    logic [31:0]    pc_4;
-    always_ff @(posedge clk) begin 
-        pc_4        <= #1 result;      
-    end
+    );                
 
     logic [31:0]    instr;
     Instruction_memory Instr_Mem (
@@ -34,9 +29,9 @@ module riscv(
         .instr(instr)
     );
 
-    logic [31:0]    ir;
+    logic [31:0]    if_reg;
     always_ff @(posedge clk) begin
-        ir           <= #1 instr;   
+        if_reg          <= #1 instr;   
     end
 
     logic           branch,
@@ -60,27 +55,27 @@ module riscv(
         .alu_op(alu_op)
     );
     
-    logic [31:0]    ir_reg;
+    logic [31:0]    waddr;
     logic           reg_wr,
                     mem_rd,
                     mem_wr,
-                    memreg;
+                    mr_reg;
 
     always_ff @(posedge clk) begin
-        ir_reg          <= #1 ir[11:7];
+        waddr           <= #1 if_reg[11:7];
         reg_wr          <= #1 regwrite;
         mem_rd          <= #1 memread;
         mem_wr          <= #1 memwrite;
-        memreg          <= #1 memtoreg;
+        mr_reg          <= #1 memtoreg;
     end
 
     logic [31:0]    wr_data,
                     reg_data1,
                     reg_data2;
     Registers Reg (
-        .reg_addr1(ir[19:15]),
-        .reg_addr2(ir[24:20]),
-        .wr_addr(ir_reg),
+        .reg_addr1(if_reg[19:15]),
+        .reg_addr2(if_reg[24:20]),
+        .wr_addr(waddr),
         .clk(clk),
         .rst_n(rst_n),
         .wr_data(wr_data),
@@ -98,14 +93,15 @@ module riscv(
     logic [3:0]     operation; 
     ALU_Ctrl ALUctrl (
         .alu_op(alu_op),
-        .funct73({ir[30],ir[14:12]}),
+        .funct73({if_reg[30],if_reg[14:12]}),
         .operation(operation)
     );
 
+    logic [31:0]    fAreg, fBreg;
     logic [31:0]    imm_out;
     Mux_2x1 Imm_MUX (
         .MemtoReg(alu_src),
-        .in1(reg_data2),
+        .in1(fBreg),
         .in2(imm_val),
         .out(imm_out)
     );
@@ -113,55 +109,81 @@ module riscv(
     logic           zero;
     logic [31:0]    ALUresult;
     ALU ALU (
-        .operand1(reg_data1),
+        .operand1(fAreg1),
         .operand2(imm_out),
         .ALUoperation(operation),
         .ALUresult(ALUresult),
         .zero(zero)
     );
     
-    logic [31:0]    de_pc,
-                    alu,
-                    wd;               
-                    
-    always_ff @(posedge clk) begin
-        de_pc       <= #1 f_pc;        
-        alu         <= #1 ALUresult;
-        wd          <= #1 reg_data2;
-    end
-
     Add Offset (
         .operand1(f_pc),
         .operand2(imm_val),
         .result(addresult)
     );
-  
-    logic [31:0]    add_pip;
-    logic           brc;
 
+    logic [31:0]    alu_reg,
+                    add_reg,
+                    wrd_mem;
+
+    logic           zero_reg,
+                    bran_reg;               
+                    
     always_ff @(posedge clk) begin
-        add_pip     <= #1 addresult;
-        brc         <= #1 (branch & zero);
+        zero_reg        <= #1 zero;
+        bran_reg        <= #1 branch;
+
+        alu_reg         <= #1 ALUresult;
+        add_reg         <= #1 addresult;  
+        wrd_mem         <= #1 reg_data2;  
     end
+
+    logic           brc;
+    assign brc = bran_reg & zero_reg;
 
     Mux_2x1 Br_MUX (
         .MemtoReg(brc),
         .in1(pc_4),
-        .in2(add_pip),
+        .in2(add_reg),
         .out(pc_next)
     );   
+
+    logic           fA, fB;
+    forward_unit inst_fwd_unit (
+        .regwr(reg_wr),
+        .rs1(if_reg[19:15]),
+        .rs2(if_reg[24:20]),
+        .rd(waddr),
+
+        .fwd_A(fA),
+        .fwd_B(fB)
+    );
+
+    Mux_2x1 fMux_A (
+        .MemtoReg(fA),
+        .in1(reg_data1),
+        .in2(wr_data),
+        .out(fAreg)
+    );
+
+    Mux_2x1 fMux_B (
+        .MemtoReg(fB),
+        .in1(reg_data2),
+        .in2(wr_data),
+        .out(fBreg)
+    );
 
     logic [31:0]    read;
     Data_memory Data_Mem (
         .clk(clk), .wr_en(mem_wr), .rd_en(mem_rd),
-        .addr(alu), .wr_data(wd),
+        .addr(alu_reg), .wr_data(wrd_mem),
         .rdata(read),
         .rst_n(rst_n)
     );
 
     Mux_2x1 Reg_MUX (
-        .MemtoReg(memreg),
-        .in1(alu),
+        .MemtoReg(mr_reg),
+        .in1(alu_reg),
         .in2(read),
         .out(wr_data)
     ); 
