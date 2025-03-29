@@ -8,12 +8,12 @@ always_comb begin : Ctrl
     case(alu_op)
         2'b00: operation = 4'b0010;          // ADD
         2'b01: operation = 4'b0110;          // SUB
-        2'b11: operation = 4'b0010;          // ADDi (func3 dependant.)
+        
         2'b10: begin
             case(funct73)
-                4'b0000: operation = 4'b0000; // ADD
+                4'b0000: operation = 4'b0010; // ADD
                 4'b1000: operation = 4'b0110; // SUB
-                4'b0111: operation = 4'b0010; // AND
+                4'b0111: operation = 4'b0000; // AND
                 4'b0110: operation = 4'b0001; // OR
                 default: operation = 4'bx;    // Undefined funct73
             endcase

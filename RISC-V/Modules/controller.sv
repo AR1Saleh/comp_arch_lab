@@ -14,18 +14,18 @@ module controller(
                 branch      = 'b0;
                 alu_op      = 'b00;
             end
-            19: begin       // I-type Immediate
+            19: begin       // I-type
                 alu_src     = 'b1;
                 memtoreg    = 'b0;
                 regwrite    = 'b1;
                 memread     = 'b0;
                 memwrite    = 'b0;
                 branch      = 'b0;
-                alu_op      = 'b11;
+                alu_op      = 'b00;
             end
             35: begin       // Stores
                 alu_src     = 'b1;
-                memtoreg    = 'bx;
+                //memtoreg    = 'bx;
                 regwrite    = 'b0;
                 memread     = 'b0;
                 memwrite    = 'b1;
@@ -43,7 +43,7 @@ module controller(
             end
             99: begin       // Branches
                 alu_src     = 'b0;
-                memtoreg    = 'bx;
+                //memtoreg    = 'bx;
                 regwrite    = 'b0;
                 memread     = 'b0;
                 memwrite    = 'b0;
