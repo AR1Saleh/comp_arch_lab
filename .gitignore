@@ -1,0 +1,12 @@
+*.rapidgpt
+**/.vscode/
+**/work/
+*.wlf
+transcript*
+*.bkp
+wlf*
+check.txt
+instructions.txt
+output.txt
+
+
