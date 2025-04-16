@@ -1,0 +1,101 @@
+# vsim -c work.riscv_tb -do "run -all; quit" 
+# Start time: 10:45:00 on Apr 15,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# Support of the MGLS_LICENSE_FILE and LM_LICENSE_FILE licensing environment variables will be discontinued starting with the 2025.1 release. Please update to using the SALT_LICENSE_SERVER variable.
+# Please contact Siemens EDA Customer Support (https://support.sw.siemens.com/) for assistance.
+# //  Questa Sim-64
+# //  Version 2024.1 win64 Feb  1 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.riscv_tb(fast)
+# run -all
+# x1:          0
+# 
+# x10:          0
+# 
+# x31:          0
+# 
+# x1:          0
+# 
+# x10:          0
+# 
+# x31:          0
+# 
+# x1:          1
+# 
+# x10:          0
+# 
+# x31:          0
+# 
+# x1:          1
+# 
+# x10:          0
+# 
+# x31:          0
+# 
+# x1:          1
+# 
+# x10:          0
+# 
+# x31:          1
+# 
+# x1:          1
+# 
+# x10:          0
+# 
+# x31:          1
+# 
+# x1:          0
+# 
+# x10:          0
+# 
+# x31:          1
+# 
+# x1:          1
+# 
+# x10:          0
+# 
+# x31:          1
+# 
+# x1:          1
+# 
+# x10:          1
+# 
+# x31:          1
+# 
+# x1:          2
+# 
+# x10:          1
+# 
+# x31:          1
+# 
+# x1:          2
+# 
+# x10:          1
+# 
+# x31:          1
+# 
+# x1:          2
+# 
+# x10:          1
+# 
+# x31:          1
+# 
+# ** Note: $stop    : riscv_tb.sv(23)
+#    Time: 135 ns  Iteration: 1  Instance: /riscv_tb
+# Break at riscv_tb.sv line 23
+# Stopped at riscv_tb.sv line 23
+#  quit
+# End time: 10:45:01 on Apr 15,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
