@@ -1,5 +1,5 @@
 # vsim -c work.riscv_tb -do "run -all; quit" 
-# Start time: 10:45:00 on Apr 15,2025
+# Start time: 10:16:18 on Apr 17,2025
 # ** Note: (vsim-3812) Design is being optimized...
 # Support of the MGLS_LICENSE_FILE and LM_LICENSE_FILE licensing environment variables will be discontinued starting with the 2025.1 release. Please update to using the SALT_LICENSE_SERVER variable.
 # Please contact Siemens EDA Customer Support (https://support.sw.siemens.com/) for assistance.
@@ -97,5 +97,5 @@
 # Break at riscv_tb.sv line 23
 # Stopped at riscv_tb.sv line 23
 #  quit
-# End time: 10:45:01 on Apr 15,2025, Elapsed time: 0:00:01
+# End time: 10:16:22 on Apr 17,2025, Elapsed time: 0:00:04
 # Errors: 0, Warnings: 0

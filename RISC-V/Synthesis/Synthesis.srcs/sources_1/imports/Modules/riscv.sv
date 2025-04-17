@@ -1,6 +1,10 @@
 module riscv(
     input               clk,
-                        rst_n             
+                        rst_n,   
+
+    output logic [31:0] x1,
+                        x31,
+                        x10                      
 );
     logic [31:0]    addresult;
     logic [31:0]    result;
@@ -101,7 +105,10 @@ module riscv(
         .wr_data(wr_data),
         .reg_data1(reg_data1),
         .reg_data2(reg_data2),
-        .wr_en(reg_wr)
+        .wr_en(reg_wr),
+        .x1(x1),
+        .x10(x10),
+        .x31(x31)
     );
 
     logic [31:0]    imm_val;

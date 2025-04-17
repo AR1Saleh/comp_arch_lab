@@ -25,6 +25,7 @@ module Registers(
             regfile[wr_addr] <= wr_data;
         end 
     end
+    
 endmodule
 
 

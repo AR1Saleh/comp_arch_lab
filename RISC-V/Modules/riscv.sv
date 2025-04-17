@@ -1,6 +1,7 @@
 module riscv(
     input               clk,
-                        rst_n             
+                        rst_n   
+                     
 );
     logic [31:0]    addresult;
     logic [31:0]    result;
