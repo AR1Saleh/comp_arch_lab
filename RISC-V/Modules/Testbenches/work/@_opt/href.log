@@ -1,6 +1,9 @@
 BEGIN 1:Registers:fast:work
     regfile :  1:riscv_tb:fast:work
 END 
+BEGIN 1:Data_memory:fast:work
+    data_mem :  1:riscv_tb:fast:work
+END 
 BEGIN 1:Instruction_memory:fast:work
     mem :  1:riscv_tb:fast:work
 END 

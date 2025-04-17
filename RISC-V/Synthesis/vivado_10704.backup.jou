@@ -1,0 +1,56 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Apr 17 19:09:06 2025
+# Process ID: 10704
+# Current directory: E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Synthesis
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent4864 E:\Study Folder\Engineering\Computer Engineering\Computer Systems\Architectures\Notes\Lab\Codes\RISC-V\Synthesis\Synthesis.xpr
+# Log file: E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Synthesis/vivado.log
+# Journal file: E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Synthesis\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Synthesis/Synthesis.xpr}
+update_compile_order -fileset sources_1
+synth_design -rtl -name rtl_1
+refresh_design
+refresh_design
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+open_run synth_1 -name synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+refresh_design
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+current_design rtl_1
+current_design synth_1
+current_design rtl_1
+refresh_design
+set_property IOSTANDARD LVCMOS33 [get_ports [list {Dspout[6]} {Dspout[5]} {Dspout[4]} {Dspout[3]} {Dspout[2]} {Dspout[1]} {Dspout[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {Segout[2]} {Segout[1]} {Segout[0]}]]
+place_ports {Dspout[0]} T10
+place_ports {Dspout[1]} R10
+place_ports {Dspout[2]} K16
+place_ports {Dspout[3]} K13
+place_ports {Dspout[4]} P15
+place_ports {Dspout[5]} T11
+place_ports {Dspout[6]} L18
+place_ports {Segout[2]} J17
+place_ports {Segout[1]} J18
+place_ports {Segout[0]} T9
+save_constraints
+reset_run impl_1
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1

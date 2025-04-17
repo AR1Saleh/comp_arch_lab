@@ -1,10 +1,9 @@
 module riscv(
-    input               clk,
-                        rst_n,   
+    input                   clk,
+                            rst_n,   
 
-    output logic [31:0] x1,
-                        x31,
-                        x10                      
+    output logic    [6:0]   Dspout, 
+    output logic    [3:0]   Segout                      
 );
     logic [31:0]    addresult;
     logic [31:0]    result;
@@ -93,7 +92,7 @@ module riscv(
         end
     end
 
-    logic [31:0]    wr_data,
+    logic [31:0]    wr_data, x1,x2,x3,
                     reg_data1,
                     reg_data2;
     Registers Reg (
@@ -106,9 +105,10 @@ module riscv(
         .reg_data1(reg_data1),
         .reg_data2(reg_data2),
         .wr_en(reg_wr),
+        
         .x1(x1),
-        .x10(x10),
-        .x31(x31)
+        .x2(x2),
+        .x3(x3)
     );
 
     logic [31:0]    imm_val;
@@ -211,10 +211,11 @@ module riscv(
     );
     */
 
-    logic [31:0]    read;
+    logic [31:0]    read, m0;
     Data_memory Data_Mem (
         .clk(clk), .wr_en(mem_wr), .rd_en(mem_rd),
         .addr(alu_reg), .wr_data(wrd_mem),
+        .mem0(m0),
         .rdata(read),
         .rst_n(rst_n)
     );
@@ -225,5 +226,18 @@ module riscv(
         .in2(read),
         .out(wr_data)
     ); 
+
+    SSD Test_Block (
+        .clk_i(clk),
+        .reset_i(rst_n),
+
+        .x1(x1),
+        .x2(x2),
+        .x3(x3),
+        .m0(m0),
+
+        .Dspout(Dspout),
+        .Segout(Segout)  
+    );
 
 endmodule

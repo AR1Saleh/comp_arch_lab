@@ -1,0 +1,43 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Apr 17 07:49:46 2025
+# Process ID: 14140
+# Current directory: E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Synthesis
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14004 E:\Study Folder\Engineering\Computer Engineering\Computer Systems\Architectures\Notes\Lab\Codes\RISC-V\Synthesis\Synthesis.xpr
+# Log file: E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Synthesis/vivado.log
+# Journal file: E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Synthesis\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Synthesis/Synthesis.xpr}
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+refresh_design
+synth_design -rtl -name rtl_1
+set_property IOSTANDARD LVCMOS33 [get_ports [list clk]]
+place_ports clk D8
+place_ports clk E3
+place_ports rst_n L16
+set_property IOSTANDARD LVCMOS33 [get_ports [list {x1[31]} {x1[30]} {x1[29]} {x1[28]} {x1[27]} {x1[26]} {x1[25]} {x1[24]} {x1[23]} {x1[22]} {x1[21]} {x1[20]} {x1[19]} {x1[18]} {x1[17]} {x1[16]} {x1[15]} {x1[14]} {x1[13]} {x1[12]} {x1[11]} {x1[10]} {x1[9]} {x1[8]} {x1[7]} {x1[6]} {x1[5]} {x1[4]} {x1[3]} {x1[2]} {x1[1]} {x1[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {x10[31]} {x10[30]} {x10[29]} {x10[28]} {x10[27]} {x10[26]} {x10[25]} {x10[24]} {x10[23]} {x10[22]} {x10[21]} {x10[20]} {x10[19]} {x10[18]} {x10[17]} {x10[16]} {x10[15]} {x10[14]} {x10[13]} {x10[12]} {x10[11]} {x10[10]} {x10[9]} {x10[8]} {x10[7]} {x10[6]} {x10[5]} {x10[4]} {x10[3]} {x10[2]} {x10[1]} {x10[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {x31[31]} {x31[30]} {x31[29]} {x31[28]} {x31[27]} {x31[26]} {x31[25]} {x31[24]} {x31[23]} {x31[22]} {x31[21]} {x31[20]} {x31[19]} {x31[18]} {x31[17]} {x31[16]} {x31[15]} {x31[14]} {x31[13]} {x31[12]} {x31[11]} {x31[10]} {x31[9]} {x31[8]} {x31[7]} {x31[6]} {x31[5]} {x31[4]} {x31[3]} {x31[2]} {x31[1]} {x31[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list rst_n]]
+file mkdir {E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Synthesis/Synthesis.srcs/constrs_1/new}
+close [ open {E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Synthesis/Synthesis.srcs/constrs_1/new/IO_Map.xdc} w ]
+add_files -fileset constrs_1 {{E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Synthesis/Synthesis.srcs/constrs_1/new/IO_Map.xdc}}
+set_property target_constrs_file {E:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Synthesis/Synthesis.srcs/constrs_1/new/IO_Map.xdc} [current_fileset -constrset]
+save_constraints -force

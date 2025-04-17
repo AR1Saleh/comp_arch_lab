@@ -3,34 +3,49 @@ module Instruction_memory(
     output logic [31:0] instr
 );
 
-    // 64-word instruction ROM, first 10 entries are your hardwired instructions,
-    // all others default to 0. Synthesizable in typical FPGA flows.
-    logic [31:0] mem [9:0] = '{
-        // Index 0
-        32'h00100093,
-        // Index 1
+    // 19-word instruction ROM (addresses 0..18)
+    logic [31:0] mem [18:0] = '{
+        //  0
+        32'h00a00093,
+        //  1
         32'h00102023,
-        // Index 2
-        32'h00002f83,
-        // Index 3
-        32'h00108a63,
-        // Index 4
+        //  2
+        32'h00002103,
+        //  3
+        32'h00100093,
+        //  4
+        32'h00500113,
+        //  5
+        32'h00000013,
+        //  6
+        32'h002081b3,
+        //  7
+        32'h00100093,
+        //  8
+        32'h00500113,
+        //  9
+        32'h002081b3,
+        // 10
+        32'h00100093,
+        // 11
+        32'h00100113,
+        // 12
+        32'h00208463,
+        // 13
         32'h00108093,
-        // Index 5
+        // 14
         32'h00108093,
-        // Index 6
-        32'h00108093,
-        // Index 7
-        32'h00108093,
-        // Index 8
-        32'h00002503,
-        // Index 9
-        32'h00108093
+        // 15
+        32'h00100093,
+        // 16
+        32'h00102023,
+        // 17
+        32'h00002103,
+        // 18
+        32'h00110193
     };
 
-    // Right-shift by 2 to index words in a byte-addressed scheme
+    // byte-address ? word index
     assign instr = mem[addr >> 2];
 
 endmodule
-
-
