@@ -12,10 +12,10 @@ Z0 !s99 nomlopt
 cModel Technology
 Z1 dE:/Study Folder/Engineering/Computer Engineering/Computer Systems/Architectures/Notes/Lab/Codes/RISC-V/Modules/Testbenches
 T_opt
-!s110 1744902293
-Vj[n4F<Ug6S>_SbG[SXXF<0
+!s110 1745258091
+V`SWEUf06nb;ZQfSR2o]=b2
 04 8 4 work riscv_tb fast 0
-=1-b4692180d6ee-68011895-104-47b8
+=1-b4692180d6ee-6806866a-254-2d4
 R0
 !s12f OEM100
 !s12b OEM100
@@ -27,7 +27,7 @@ OL;O;2024.1;79
 vAdd
 2../Branch_Adder.sv
 Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z4 !s110 1744902291
+Z4 !s110 1745258086
 !i10b 1
 !s100 7[G5<H5?YcMQL<h<dOQ050
 IeVH8`dPBaa=AU9_QDI]Y?1
@@ -43,7 +43,7 @@ Z7 OL;L;2024.1;79
 r1
 !s85 0
 31
-Z8 !s108 1744902291.000000
+Z8 !s108 1745258086.000000
 !s107 ../Branch_Adder.sv|
 !s90 -work|work|-sv|-stats=none|../Branch_Adder.sv|
 !i113 0
@@ -53,7 +53,7 @@ n@add
 vALU
 2../ALU.sv
 R3
-Z10 !s110 1744902290
+Z10 !s110 1745258085
 !i10b 1
 !s100 4NEIdEfYWF7T?YiOiZ?<L3
 I0NPCF<ZMCTGZbW?@VH58A1
@@ -69,7 +69,7 @@ R7
 r1
 !s85 0
 31
-Z12 !s108 1744902290.000000
+Z12 !s108 1745258085.000000
 !s107 ../ALU.sv|
 !s90 -work|work|-sv|-stats=none|../ALU.sv|
 !i113 0
@@ -79,7 +79,7 @@ n@a@l@u
 vALU_Ctrl
 2../ALU_Ctrl.sv
 R3
-R4
+R10
 !i10b 1
 !s100 QBQ:5IRfXNB>M[LB?I`6:3
 Ib`WLmh4V;>KVVCg9i:KPZ2
@@ -181,7 +181,7 @@ R2
 vInstruction_memory
 2../instruction_memory.sv
 R3
-R4
+Z14 !s110 1745258087
 !i10b 1
 !s100 >GWPlH0Mcd@HdeYX:kf[=2
 IKD[:>:dA2W9@f]jj1J3861
@@ -207,7 +207,7 @@ n@instruction_memory
 vMux_2x1
 2../Mux_2x1.sv
 R3
-R4
+R14
 !i10b 1
 !s100 SlX7O=Y63nV`nYVDJPVGd0
 I[U^G[iCA>S8^Chz9LM6[B0
@@ -223,7 +223,7 @@ R7
 r1
 !s85 0
 31
-R8
+Z15 !s108 1745258087.000000
 !s107 ../Mux_2x1.sv|
 !s90 -work|work|-sv|-stats=none|../Mux_2x1.sv|
 !i113 0
@@ -233,7 +233,7 @@ n@mux_2x1
 vPC
 2../PC.sv
 R3
-R4
+R14
 !i10b 1
 !s100 <mR8lA=RGze0DlcT=2KmF3
 IRTL;6b>zK:cLbdQjjaaAL3
@@ -249,7 +249,7 @@ R7
 r1
 !s85 0
 31
-R8
+R15
 !s107 ../PC.sv|
 !s90 -work|work|-sv|-stats=none|../PC.sv|
 !i113 0
@@ -259,7 +259,7 @@ n@p@c
 vPC_Adder
 2../PC_Adder.sv
 R3
-R4
+R14
 !i10b 1
 !s100 o4V;_M;D92[S4W>cNHN0G0
 IkcnccD?NN3jaZN@JR@PMC0
@@ -275,7 +275,7 @@ R7
 r1
 !s85 0
 31
-R8
+R15
 !s107 ../PC_Adder.sv|
 !s90 -work|work|-sv|-stats=none|../PC_Adder.sv|
 !i113 0
@@ -285,7 +285,7 @@ n@p@c_@adder
 vRegisters
 2../Registers.sv
 R3
-R4
+R14
 !i10b 1
 !s100 ADa<g2CSUF7if5Bk@DPbD1
 IC``=1]D4;_W]TNi6H:D`C2
@@ -301,7 +301,7 @@ R7
 r1
 !s85 0
 31
-R8
+R15
 !s107 ../Registers.sv|
 !s90 -work|work|-sv|-stats=none|../Registers.sv|
 !i113 0
@@ -311,23 +311,23 @@ n@registers
 vriscv
 2../riscv.sv
 R3
-!s110 1744902292
+!s110 1745258088
 !i10b 1
-!s100 dQRF:>glfCP?_hn;e87eh3
-IH:zM2ckI6>VgMVebO?Jhn3
+!s100 I_I40;l8GU^Sm4=EBXe[H3
+IbeV>PPD@^FUT@G_H7>``M1
 S1
 R1
-w1744873022
+w1745258077
 8../riscv.sv
 F../riscv.sv
 !i122 12
-L0 1 222
+L0 1 207
 R6
 R7
 r1
 !s85 0
 31
-!s108 1744902292.000000
+!s108 1745258088.000000
 !s107 ../riscv.sv|
 !s90 -work|work|-sv|-stats=none|../riscv.sv|
 !i113 0
@@ -338,15 +338,15 @@ vriscv_tb
 R3
 R10
 !i10b 1
-!s100 T:87hc3m?BDo??C]MH<j91
-ICg]?m6OR8?UP:`7DLPUmz0
+!s100 9gon@236RA526S4I;<Y;K2
+I@kEYdYekm60LV01^WU7L]3
 S1
 R1
-w1744901898
+w1745256868
 8riscv_tb.sv
 Friscv_tb.sv
 !i122 0
-L0 1 40
+L0 1 38
 R6
 R7
 r1

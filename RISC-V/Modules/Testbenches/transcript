@@ -1,5 +1,5 @@
 # vsim -c work.riscv_tb -do "run -all; quit" 
-# Start time: 20:04:52 on Apr 17,2025
+# Start time: 22:54:49 on Apr 21,2025
 # ** Note: (vsim-3812) Design is being optimized...
 # Support of the MGLS_LICENSE_FILE and LM_LICENSE_FILE licensing environment variables will be discontinued starting with the 2025.1 release. Please update to using the SALT_LICENSE_SERVER variable.
 # Please contact Siemens EDA Customer Support (https://support.sw.siemens.com/) for assistance.
@@ -26,268 +26,46 @@
 # 
 # x3:          0
 # 
-# MEM0:          0
-# 
-# 
-# 
-# 
-# 
 # x1:          0
 # 
 # x2:          0
 # 
 # x3:          0
 # 
-# MEM0:          0
-# 
-# 
-# 
-# 
-# 
-# x1:         10
+# x1:          5
 # 
 # x2:          0
 # 
 # x3:          0
 # 
-# MEM0:          0
+# x1:          5
 # 
-# 
-# 
-# 
-# 
-# x1:         10
-# 
-# x2:          0
+# x2:          6
 # 
 # x3:          0
 # 
-# MEM0:         10
+# x1:          5
 # 
-# 
-# 
-# 
-# 
-# x1:         10
-# 
-# x2:         10
+# x2:          6
 # 
 # x3:          0
 # 
-# MEM0:         10
+# x1:          5
 # 
+# x2:          6
 # 
+# x3:          1
 # 
+# x1:          5
 # 
-# 
-# x1:          1
-# 
-# x2:         10
-# 
-# x3:          0
-# 
-# MEM0:         10
-# 
-# 
-# 
-# 
-# 
-# x1:          1
-# 
-# x2:          5
-# 
-# x3:          0
-# 
-# MEM0:         10
-# 
-# 
-# 
-# 
-# 
-# x1:          1
-# 
-# x2:          5
-# 
-# x3:          0
-# 
-# MEM0:         10
-# 
-# 
-# 
-# 
-# 
-# x1:          1
-# 
-# x2:          5
-# 
-# x3:          6
-# 
-# MEM0:         10
-# 
-# 
-# 
-# 
-# 
-# x1:          1
-# 
-# x2:          5
-# 
-# x3:          6
-# 
-# MEM0:         10
-# 
-# 
-# 
-# 
-# 
-# x1:          1
-# 
-# x2:          5
-# 
-# x3:          6
-# 
-# MEM0:         10
-# 
-# 
-# 
-# 
-# 
-# x1:          1
-# 
-# x2:          5
-# 
-# x3:          6
-# 
-# MEM0:         10
-# 
-# 
-# 
-# 
-# 
-# x1:          1
-# 
-# x2:          5
-# 
-# x3:          6
-# 
-# MEM0:         10
-# 
-# 
-# 
-# 
-# 
-# x1:          1
-# 
-# x2:          1
-# 
-# x3:          6
-# 
-# MEM0:         10
-# 
-# 
-# 
-# 
-# 
-# x1:          1
-# 
-# x2:          1
-# 
-# x3:          6
-# 
-# MEM0:         10
-# 
-# 
-# 
-# 
-# 
-# x1:          0
-# 
-# x2:          1
-# 
-# x3:          6
-# 
-# MEM0:         10
-# 
-# 
-# 
-# 
-# 
-# x1:          1
-# 
-# x2:          1
-# 
-# x3:          6
-# 
-# MEM0:         10
-# 
-# 
-# 
-# 
-# 
-# x1:          2
-# 
-# x2:          1
-# 
-# x3:          6
-# 
-# MEM0:         10
-# 
-# 
-# 
-# 
-# 
-# x1:          1
-# 
-# x2:          1
-# 
-# x3:          6
-# 
-# MEM0:         10
-# 
-# 
-# 
-# 
-# 
-# x1:          1
-# 
-# x2:          1
-# 
-# x3:          6
-# 
-# MEM0:          1
-# 
-# 
-# 
-# 
-# 
-# x1:          1
-# 
-# x2:          1
-# 
-# x3:          6
-# 
-# MEM0:          1
-# 
-# 
-# 
-# 
-# 
-# x1:          1
-# 
-# x2:          1
+# x2:          6
 # 
 # x3:          2
 # 
-# MEM0:          1
-# 
-# 
-# 
-# 
-# 
-# ** Note: $stop    : riscv_tb.sv(20)
-#    Time: 235 ns  Iteration: 1  Instance: /riscv_tb
-# Break at riscv_tb.sv line 20
-# Stopped at riscv_tb.sv line 20
+# ** Note: $stop    : riscv_tb.sv(18)
+#    Time: 85 ns  Iteration: 1  Instance: /riscv_tb
+# Break at riscv_tb.sv line 18
+# Stopped at riscv_tb.sv line 18
 #  quit
-# End time: 20:04:54 on Apr 17,2025, Elapsed time: 0:00:02
+# End time: 22:54:52 on Apr 21,2025, Elapsed time: 0:00:03
 # Errors: 0, Warnings: 0

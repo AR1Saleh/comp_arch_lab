@@ -34,7 +34,6 @@ module riscv(
         .instr(instr)
     );
 
-    logic           brc;
     logic [31:0]    if_reg;
     always_ff @(posedge clk) begin
         if (!rst_n) begin
@@ -143,37 +142,23 @@ module riscv(
     );
 
     logic [31:0]    alu_reg,
-                    add_reg,
-                    wrd_mem;
-
-    logic           zero_reg,
-                    bran_reg;               
+                    wrd_mem;             
                     
     always_ff @(posedge clk) begin
-        if (!rst_n | brc) begin
-            zero_reg        <= #1 0;
-            bran_reg        <= #1 0;
-
+        if (!rst_n) begin
             alu_reg         <= #1 0;
-            add_reg         <= #1 0;  
             wrd_mem         <= #1 0;
         end
         else begin
-            zero_reg        <= #1 zero;
-            bran_reg        <= #1 branch;
-
             alu_reg         <= #1 ALUresult;
-            add_reg         <= #1 addresult;  
             wrd_mem         <= #1 reg_data2;  
         end
     end
 
-    assign brc = bran_reg & zero_reg;
-
     Mux_2x1 Br_MUX (
-        .MemtoReg(brc),
+        .MemtoReg(branch & zero),
         .in1(result),
-        .in2(add_reg),
+        .in2(addresult),
         .out(pc_next)
     );   
 

@@ -7,12 +7,10 @@ module riscv_tb;
 
     reset_seq; 
 
-    repeat(22) @(posedge clk) begin
+    repeat(7) @(posedge clk) begin
         $display("x1: %d\n", dut.Reg.regfile[1]);
         $display("x2: %d\n", dut.Reg.regfile[2]);
         $display("x3: %d\n", dut.Reg.regfile[3]);
-        $display("MEM0: %d\n\n\n\n\n", dut.Data_Mem.data_mem[0]);
-
     end; 
 
     $writememh("output.txt" , dut.Reg.regfile);

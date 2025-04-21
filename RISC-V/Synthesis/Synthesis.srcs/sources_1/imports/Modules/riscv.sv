@@ -1,3 +1,68 @@
+module top(
+    input                   clk,
+                            rst_n,
+                          
+    output logic            clk_1,                            
+    output logic    [6:0]   Dspout, 
+    output logic    [3:0]   Segout                             
+);
+
+logic s_clk;
+
+clk_div_1hz C1(
+    .clk_100mhz(clk),
+    .rst_n(rst_n),
+    .clk_1hz(s_clk)
+);
+
+riscv(
+    .clk(s_clk),
+    .rst_n(rst_n),
+    
+    .Dspout(Dspout),
+    .Segout(Segout)
+);
+
+assign clk_1 = s_clk; 
+
+endmodule
+
+module clk_div_1hz #(
+    // For a 100 MHz source, half-period = 0.5 s × 100 MHz = 50_000_000 cycles
+    localparam integer HALF_PERIOD    = 50_000_000,
+    // 2^25 = 33 554 432 < 50 000 000 ? 2^26 = 67 108 864 ? need 26 bits
+    localparam integer COUNTER_WIDTH  = 26
+)(
+    input                           clk_100mhz, rst_n, 
+    output bit                      clk_1hz      // 1 Hz global clock
+);
+
+    // Counter and raw divider signal
+    reg [COUNTER_WIDTH-1:0] counter;
+    reg                    div_clk;
+
+    // Divide logic: toggle div_clk every HALF_PERIOD cycles
+    always_ff @(posedge clk_100mhz or negedge rst_n) begin
+        if (!rst_n) begin
+            counter <= '0;
+            div_clk <= 1'b0;
+        end else if (counter == HALF_PERIOD-1) begin
+            counter <= '0;
+            div_clk <= ~div_clk;
+        end else begin
+            counter <= counter + 1;
+        end
+    end
+
+    // Feed the divided clock through a global buffer for low-skew distribution
+    BUFG bufg_clk1hz (
+        .I(div_clk),
+        .O(clk_1hz)
+    );
+
+endmodule
+
+
 module riscv(
     input                   clk,
                             rst_n,   
@@ -229,12 +294,11 @@ module riscv(
 
     SSD Test_Block (
         .clk_i(clk),
-        .reset_i(rst_n),
 
-        .x1(x1),
-        .x2(x2),
-        .x3(x3),
-        .m0(m0),
+        .x1(x1[3:0]),
+        .x2(x2[3:0]),
+        .x3(x3[3:0]),
+        .m0(m0[3:0]),
 
         .Dspout(Dspout),
         .Segout(Segout)  

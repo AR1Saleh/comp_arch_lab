@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1744903196">
-  <File Type="PA-TCL" Name="riscv.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="riscv_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="riscv_reports.tcl"/>
-  <File Type="RDS-RDS" Name="riscv.vds"/>
-  <File Type="RDS-UTIL" Name="riscv_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="riscv_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="riscv.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="riscv_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="riscv_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1744959416">
+  <File Type="PA-TCL" Name="top.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="top_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="top_reports.tcl"/>
+  <File Type="RDS-RDS" Name="top.vds"/>
+  <File Type="RDS-UTIL" Name="top_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="top_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="top.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="top_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="top_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/Modules/ALU.sv">
@@ -130,7 +130,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="riscv"/>
+      <Option Name="TopModule" Val="top"/>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>

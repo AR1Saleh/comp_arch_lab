@@ -1,6 +1,6 @@
 module SSD (
+    input                   clk_i, 
     input           [3:0]   x1, x2, x3, m0,
-    input                   clk_i, reset_i,
 
     output logic    [6:0]   Dspout, 
     output logic    [3:0]   Segout
