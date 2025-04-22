@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date             : Fri Apr 18 12:00:15 2025
+| Date             : Tue Apr 22 22:00:18 2025
 | Host             : RB17 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -29,20 +29,20 @@ Table of Contents
 1. Summary
 ----------
 
-+--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.875        |
-| Design Power Budget (W)  | Unspecified* |
-| Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.789        |
-| Device Static (W)        | 0.087        |
-| Effective TJA (C/W)      | 4.6          |
-| Max Ambient (C)          | 81.0         |
-| Junction Temperature (C) | 29.0         |
-| Confidence Level         | Low          |
-| Setting File             | ---          |
-| Simulation Activity File | ---          |
-| Design Nets Matched      | NA           |
-+--------------------------+--------------+
++--------------------------+----------------------------------+
+| Total On-Chip Power (W)  | 15.142 (Junction temp exceeded!) |
+| Design Power Budget (W)  | Unspecified*                     |
+| Power Budget Margin (W)  | NA                               |
+| Dynamic (W)              | 14.796                           |
+| Device Static (W)        | 0.346                            |
+| Effective TJA (C/W)      | 4.6                              |
+| Max Ambient (C)          | 15.9                             |
+| Junction Temperature (C) | 94.1                             |
+| Confidence Level         | Low                              |
+| Setting File             | ---                              |
+| Simulation Activity File | ---                              |
+| Design Nets Matched      | NA                               |
++--------------------------+----------------------------------+
 * Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
 
 
@@ -52,17 +52,16 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     0.402 |      914 |       --- |             --- |
-|   LUT as Logic |     0.363 |      390 |     63400 |            0.62 |
-|   CARRY4       |     0.017 |       19 |     15850 |            0.12 |
-|   Register     |     0.017 |      436 |    126800 |            0.34 |
+| Slice Logic    |     0.459 |      903 |       --- |             --- |
+|   LUT as Logic |     0.420 |      441 |     63400 |            0.70 |
+|   Register     |     0.019 |      414 |    126800 |            0.33 |
+|   CARRY4       |     0.014 |       16 |     15850 |            0.10 |
 |   BUFG         |     0.006 |        2 |        32 |            6.25 |
-|   Others       |     0.000 |       11 |       --- |             --- |
-|   F7/F8 Muxes  |     0.000 |       32 |     63400 |            0.05 |
-| Signals        |     0.383 |      785 |       --- |             --- |
-| I/O            |     0.004 |       14 |       210 |            6.67 |
-| Static Power   |     0.087 |          |           |                 |
-| Total          |     0.875 |          |           |                 |
+|   Others       |     0.000 |        9 |       --- |             --- |
+| Signals        |     0.443 |      858 |       --- |             --- |
+| I/O            |    13.895 |       13 |       210 |            6.19 |
+| Static Power   |     0.346 |          |           |                 |
+| Total          |    15.142 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,16 +71,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.806 |       0.789 |      0.017 |
-| Vccaux    |       1.800 |     0.018 |       0.000 |      0.018 |
-| Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |
+| Vccint    |       1.000 |     1.117 |       0.906 |      0.212 |
+| Vccaux    |       1.800 |     0.553 |       0.509 |      0.044 |
+| Vcco33    |       3.300 |     3.936 |       3.932 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.000 |       0.000 |      0.000 |
+| Vccbram   |       1.000 |     0.006 |       0.000 |      0.006 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |
@@ -136,22 +135,20 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+------------------+-----------+
-| Name             | Power (W) |
-+------------------+-----------+
-| top              |     0.789 |
-|   C1             |     0.280 |
-|   nolabel_line18 |     0.492 |
-|     ALU          |     0.000 |
-|     Br_MUX       |     0.000 |
-|     Ctrl         |     0.000 |
-|     Data_Mem     |     0.042 |
-|     Offset       |     0.000 |
-|     PC           |     0.000 |
-|     PC_Adder     |     0.000 |
-|     Reg          |     0.140 |
-|     Test_Block   |     0.310 |
-|       Out        |     0.310 |
-+------------------+-----------+
++----------------+-----------+
+| Name           | Power (W) |
++----------------+-----------+
+| top            |    14.796 |
+|   C1           |     0.211 |
+|   inst         |     0.677 |
+|     ALU        |     0.000 |
+|     Data_Mem   |     0.065 |
+|     Offset     |     0.000 |
+|     PC         |     0.000 |
+|     PC_Adder   |     0.000 |
+|     Test_Block |     0.395 |
+|       Out      |     0.395 |
+|     inst_reg   |     0.217 |
++----------------+-----------+
 
 

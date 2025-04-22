@@ -1,0 +1,143 @@
+# vsim -c work.riscv_tb -do "run -all; quit" 
+# Start time: 21:38:05 on Apr 22,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# Support of the MGLS_LICENSE_FILE and LM_LICENSE_FILE licensing environment variables will be discontinued starting with the 2025.1 release. Please update to using the SALT_LICENSE_SERVER variable.
+# Please contact Siemens EDA Customer Support (https://support.sw.siemens.com/) for assistance.
+# ** Warning: ../SSD.sv(60): (vopt-13314) Defaulting port 'memDspInt' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# //  Questa Sim-64
+# //  Version 2024.1 win64 Feb  1 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.riscv_tb(fast)
+# run -all
+# x1:          0
+# 
+# x2:          0
+# 
+# x3:          0
+# 
+# 
+# x1:          0
+# 
+# x2:          0
+# 
+# x3:          0
+# 
+# 
+# x1:          0
+# 
+# x2:          0
+# 
+# x3:          0
+# 
+# 
+# x1:          0
+# 
+# x2:          0
+# 
+# x3:          0
+# 
+# 
+# x1:         10
+# 
+# x2:          0
+# 
+# x3:          0
+# 
+# 
+# x1:         10
+# 
+# x2:          0
+# 
+# x3:          0
+# 
+# 
+# x1:         10
+# 
+# x2:          0
+# 
+# x3:          0
+# 
+# 
+# x1:         10
+# 
+# x2:          0
+# 
+# x3:          0
+# 
+# 
+# x1:         10
+# 
+# x2:         10
+# 
+# x3:          0
+# 
+# 
+# x1:         10
+# 
+# x2:         10
+# 
+# x3:          0
+# 
+# 
+# x1:          1
+# 
+# x2:         10
+# 
+# x3:          0
+# 
+# 
+# x1:          1
+# 
+# x2:         10
+# 
+# x3:          0
+# 
+# 
+# x1:          1
+# 
+# x2:          5
+# 
+# x3:          0
+# 
+# 
+# x1:          1
+# 
+# x2:          5
+# 
+# x3:          0
+# 
+# 
+# x1:          1
+# 
+# x2:          5
+# 
+# x3:          0
+# 
+# 
+# x1:          1
+# 
+# x2:          5
+# 
+# x3:          0
+# 
+# 
+# ** Note: $stop    : riscv_tb.sv(26)
+#    Time: 16000015 ns  Iteration: 1  Instance: /riscv_tb
+# Break at riscv_tb.sv line 26
+# Stopped at riscv_tb.sv line 26
+#  quit
+# End time: 21:38:08 on Apr 22,2025, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 1

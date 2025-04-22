@@ -1,8 +1,7 @@
 module top(
     input                   clk,
                             rst_n,
-                          
-    output logic            clk_1,                            
+                                                      
     output logic    [6:0]   Dspout, 
     output logic    [3:0]   Segout                             
 );
@@ -15,56 +14,46 @@ clk_div_1hz C1(
     .clk_1hz(s_clk)
 );
 
-riscv(
+riscv inst(
     .clk(s_clk),
+    .s_clk(clk),
     .rst_n(rst_n),
     
     .Dspout(Dspout),
     .Segout(Segout)
 );
 
-assign clk_1 = s_clk; 
-
 endmodule
 
 module clk_div_1hz #(
-    // For a 100 MHz source, half-period = 0.5 s × 100 MHz = 50_000_000 cycles
-    localparam integer HALF_PERIOD    = 50_000_000,
-    // 2^25 = 33 554 432 < 50 000 000 ? 2^26 = 67 108 864 ? need 26 bits
-    localparam integer COUNTER_WIDTH  = 26
+    // For a 100 MHz source, half-period = 1 s ï¿½ 100 MHz = 50_000_000 cycles
+    localparam integer HALF_PERIOD    = 100_000,
+    localparam integer COUNTER_WIDTH  = $clog2(HALF_PERIOD)
 )(
     input                           clk_100mhz, rst_n, 
-    output bit                      clk_1hz      // 1 Hz global clock
+    output logic                    clk_1hz      // 1 Hz global clock
 );
 
     // Counter and raw divider signal
     reg [COUNTER_WIDTH-1:0] counter;
-    reg                    div_clk;
 
     // Divide logic: toggle div_clk every HALF_PERIOD cycles
     always_ff @(posedge clk_100mhz or negedge rst_n) begin
         if (!rst_n) begin
             counter <= '0;
-            div_clk <= 1'b0;
+            clk_1hz <= 1'b0;
         end else if (counter == HALF_PERIOD-1) begin
             counter <= '0;
-            div_clk <= ~div_clk;
+            clk_1hz <= ~clk_1hz;
         end else begin
             counter <= counter + 1;
         end
     end
 
-    // Feed the divided clock through a global buffer for low-skew distribution
-    BUFG bufg_clk1hz (
-        .I(div_clk),
-        .O(clk_1hz)
-    );
-
 endmodule
 
-
 module riscv(
-    input                   clk,
+    input                   clk, s_clk,
                             rst_n,   
 
     output logic    [6:0]   Dspout, 
@@ -102,7 +91,6 @@ module riscv(
         .instr(instr)
     );
 
-    logic           brc;
     logic [31:0]    if_reg;
     always_ff @(posedge clk) begin
         if (!rst_n) begin
@@ -118,7 +106,7 @@ module riscv(
                     regwrite,
                     memread,
                     memwrite,
-                    memtoreg;
+                    mem2reg;
 
     logic [1:0]     alu_op;
     controller Ctrl (
@@ -129,7 +117,7 @@ module riscv(
         .regwrite(regwrite),
         .memread(memread),
         .memwrite(memwrite),
-        .memtoreg(memtoreg),
+        .memtoreg(mem2reg),
 
         .alu_op(alu_op)
     );
@@ -153,14 +141,15 @@ module riscv(
             reg_wr          <= #1 regwrite;
             mem_rd          <= #1 memread;
             mem_wr          <= #1 memwrite;
-            mr_reg          <= #1 memtoreg;
+            mr_reg          <= #1 mem2reg;
         end
     end
 
     logic [31:0]    wr_data, x1,x2,x3,
                     reg_data1,
                     reg_data2;
-    Registers Reg (
+                    
+    Registers inst_reg (
         .reg_addr1(if_reg[19:15]),
         .reg_addr2(if_reg[24:20]),
         .wr_addr(waddr),
@@ -215,37 +204,23 @@ module riscv(
     );
 
     logic [31:0]    alu_reg,
-                    add_reg,
-                    wrd_mem;
-
-    logic           zero_reg,
-                    bran_reg;               
+                    wrd_mem;               
                     
     always_ff @(posedge clk) begin
-        if (!rst_n | brc) begin
-            zero_reg        <= #1 0;
-            bran_reg        <= #1 0;
-
-            alu_reg         <= #1 0;
-            add_reg         <= #1 0;  
+        if (!rst_n) begin
+            alu_reg         <= #1 0; 
             wrd_mem         <= #1 0;
         end
         else begin
-            zero_reg        <= #1 zero;
-            bran_reg        <= #1 branch;
-
-            alu_reg         <= #1 ALUresult;
-            add_reg         <= #1 addresult;  
+            alu_reg         <= #1 ALUresult;  
             wrd_mem         <= #1 reg_data2;  
         end
     end
 
-    assign brc = bran_reg & zero_reg;
-
     Mux_2x1 Br_MUX (
-        .MemtoReg(brc),
+        .MemtoReg(branch & zero),
         .in1(result),
-        .in2(add_reg),
+        .in2(addresult),
         .out(pc_next)
     );   
 
@@ -293,7 +268,7 @@ module riscv(
     ); 
 
     SSD Test_Block (
-        .clk_i(clk),
+        .clk_i(s_clk),
 
         .x1(x1[3:0]),
         .x2(x2[3:0]),
