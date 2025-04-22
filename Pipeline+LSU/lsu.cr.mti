@@ -1,0 +1,120 @@
+D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/controller.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/controller.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module controller
+
+Top level modules:
+	controller
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/LSU.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/LSU.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module LSU
+
+Top level modules:
+	LSU
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/instr_mem.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/instr_mem.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module instr_mem
+
+Top level modules:
+	instr_mem
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/d_ff.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/d_ff.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module d_ff
+
+Top level modules:
+	d_ff
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/plus4.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/plus4.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module plus4
+
+Top level modules:
+	plus4
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/data_mem.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/data_mem.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module data_mem
+
+Top level modules:
+	data_mem
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/branch_cond.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/branch_cond.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module branch_cond
+
+Top level modules:
+	branch_cond
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/alu.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/alu.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module alu
+
+Top level modules:
+	alu
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/controller_d_ff.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/controller_d_ff.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module controller_d_ff
+
+Top level modules:
+	controller_d_ff
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/IR_dff.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/IR_dff.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module IR_dff
+
+Top level modules:
+	IR_dff
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/mux.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/mux.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module mux
+
+Top level modules:
+	mux
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/top.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/top.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module top
+
+Top level modules:
+	top
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/pc.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/pc.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module pc
+
+Top level modules:
+	pc
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/imm_gen.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/imm_gen.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module imm_gen
+
+Top level modules:
+	imm_gen
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/regfile.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/regfile.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module regfile
+
+Top level modules:
+	regfile
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/mux_wb.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/mux_wb.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module mux_wb
+
+Top level modules:
+	mux_wb
+
+} {} {}} D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/wb_sel_dff.sv {1 {vlog -work work -vopt -sv -stats=none D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/wb_sel_dff.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module wb_sel_dff
+
+Top level modules:
+	wb_sel_dff
+
+} {} {}}

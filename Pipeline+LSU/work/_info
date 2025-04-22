@@ -1,0 +1,467 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+!s11f vlog 2021.1 2021.01, Jan 19 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/questasim64_2021.1/examples
+T_opt
+!s110 1745354676
+VdbbPOBOGg9lLN^oI3Il=80
+04 6 4 work ris_tb fast 0
+=1-80ce62241068-6807ffb3-2fa-1944
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work work +acc
+Z1 tCvgOpt 0
+n@_opt
+OL;O;2021.1;73
+valu
+Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+!s110 1745354658
+!i10b 1
+!s100 [OU68;1:j_adbMYUSIa@_0
+I3jTP7NSHda^i2B^j3NIF62
+S1
+Z3 dD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU
+w1722064130
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/alu.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/alu.sv
+!i122 201
+L0 2 22
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2021.1;73
+r1
+!s85 0
+31
+Z6 !s108 1745354658.000000
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/alu.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/alu.sv|
+!i113 0
+Z7 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+vbranch_cond
+R2
+Z8 !s110 1745354659
+!i10b 1
+!s100 42PAlWWIFdE]15H44UTHS0
+IP;S2ok:`6QNT]mA3dC2oR1
+S1
+R3
+w1722087832
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/branch_cond.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/branch_cond.sv
+!i122 202
+L0 2 24
+R4
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/branch_cond.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/branch_cond.sv|
+!i113 0
+R7
+R1
+vcontroller
+R2
+R8
+!i10b 1
+!s100 Vg2RQJQdIh2D8S_RJ0BmO3
+IZkh@WD5k9:lo:h^Z=82`i1
+S1
+R3
+w1722087815
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/controller.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/controller.sv
+!i122 203
+L0 2 138
+R4
+R5
+r1
+!s85 0
+31
+Z9 !s108 1745354659.000000
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/controller.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/controller.sv|
+!i113 0
+R7
+R1
+vcontroller_d_ff
+R2
+R8
+!i10b 1
+!s100 SbB0G3KC88h1jOZdBF]410
+I<o^E]9i7iH5Vm6M<X16a11
+S1
+R3
+w1743243383
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/controller_d_ff.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/controller_d_ff.sv
+!i122 204
+Z10 L0 2 9
+R4
+R5
+r1
+!s85 0
+31
+R9
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/controller_d_ff.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/controller_d_ff.sv|
+!i113 0
+R7
+R1
+vd_ff
+R2
+R8
+!i10b 1
+!s100 mdNLUTTMn6Ab6R==_<7Oo2
+I7LJ]YQX4JLHMbiH87;``_3
+S1
+R3
+w1742691666
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/d_ff.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/d_ff.sv
+!i122 205
+L0 2 11
+R4
+R5
+r1
+!s85 0
+31
+R9
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/d_ff.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/d_ff.sv|
+!i113 0
+R7
+R1
+vdata_mem
+R2
+R8
+!i10b 1
+!s100 >R2YS0[SLb0DPnOYObPWk3
+I`J?X?1KOGaOok]WP[eocP3
+S1
+R3
+w1745125703
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/data_mem.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/data_mem.sv
+!i122 206
+L0 2 21
+R4
+R5
+r1
+!s85 0
+31
+R9
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/data_mem.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/data_mem.sv|
+!i113 0
+R7
+R1
+vimm_gen
+R2
+R8
+!i10b 1
+!s100 >ziHmR?1EO^FcOXkhPhUA0
+IgBLYJ77kK5bYW55QIKNQz0
+S1
+R3
+w1722077098
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/imm_gen.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/imm_gen.sv
+!i122 207
+L0 2 23
+R4
+R5
+r1
+!s85 0
+31
+R9
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/imm_gen.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/imm_gen.sv|
+!i113 0
+R7
+R1
+vinstr_mem
+R2
+Z11 !s110 1745354660
+!i10b 1
+!s100 9mhQ<a]eFif=2CIJ:QN3J2
+IC6UKd;l0DjmRQ]R5>U@S62
+S1
+R3
+w1743570256
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/instr_mem.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/instr_mem.sv
+!i122 208
+L0 2 33
+R4
+R5
+r1
+!s85 0
+31
+Z12 !s108 1745354660.000000
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/instr_mem.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/instr_mem.sv|
+!i113 0
+R7
+R1
+vIR_dff
+R2
+R11
+!i10b 1
+!s100 121IEN9FXODZnVYze`iYz1
+IiT3Gjk>Y1FhaI8;gk7[470
+S1
+R3
+w1744513942
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/IR_dff.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/IR_dff.sv
+!i122 209
+L0 1 18
+R4
+R5
+r1
+!s85 0
+31
+R12
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/IR_dff.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/IR_dff.sv|
+!i113 0
+R7
+R1
+n@i@r_dff
+vLSU
+R2
+R11
+!i10b 1
+!s100 <[lJnT3Yz1DYk0[?Ag7=[3
+Iz;3QMKgSL9m9TF]N[4OTm1
+S1
+R3
+w1745240703
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/LSU.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/LSU.sv
+!i122 210
+L0 1 59
+R4
+R5
+r1
+!s85 0
+31
+R12
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/LSU.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/LSU.sv|
+!i113 0
+R7
+R1
+n@l@s@u
+vmux
+R2
+R11
+!i10b 1
+!s100 4Z=J=e?WQ8bR>PQb3VLKl0
+I1LjY3Q@:O6UbADQ42bzPH1
+S1
+R3
+w1721728018
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/mux.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/mux.sv
+!i122 211
+R10
+R4
+R5
+r1
+!s85 0
+31
+R12
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/mux.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/mux.sv|
+!i113 0
+R7
+R1
+vmux_wb
+R2
+R11
+!i10b 1
+!s100 WEj`6MN_Y4]VMDCIE=8]`3
+I:6U1ZUhOeg4nVWOHg3D6X3
+S1
+R3
+w1722077194
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/mux_wb.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/mux_wb.sv
+!i122 212
+L0 2 15
+R4
+R5
+r1
+!s85 0
+31
+R12
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/mux_wb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/mux_wb.sv|
+!i113 0
+R7
+R1
+vpc
+R2
+Z13 !s110 1745354661
+!i10b 1
+!s100 Z5k^C[ZG8g0[nD77bHM_m3
+IVmdj5OWKD1aZ5LW_QGa@T1
+S1
+R3
+w1744514496
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/pc.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/pc.sv
+!i122 213
+L0 23 14
+R4
+R5
+r1
+!s85 0
+31
+R12
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/pc.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/pc.sv|
+!i113 0
+R7
+R1
+vplus4
+R2
+R13
+!i10b 1
+!s100 `h^E;88MR>o=^iRO]Q^0k3
+IIPob]c80Fz^9I^X@5?j6;1
+S1
+R3
+w1721986642
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/plus4.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/plus4.sv
+!i122 214
+L0 2 6
+R4
+R5
+r1
+!s85 0
+31
+Z14 !s108 1745354661.000000
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/plus4.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/plus4.sv|
+!i113 0
+R7
+R1
+vregfile
+R2
+R13
+!i10b 1
+!s100 PVB1KSJ8mc2=a<^IZW;PP1
+IDj_`RjPnmSkC:z9S5>>R33
+S1
+R3
+w1744510906
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/regfile.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/regfile.sv
+!i122 215
+L0 2 37
+R4
+R5
+r1
+!s85 0
+31
+R14
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/regfile.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/regfile.sv|
+!i113 0
+R7
+R1
+vris_tb
+R2
+Z15 !s110 1745354662
+!i10b 1
+!s100 XdBEA1G>eZNc17?g^JKbi2
+IYdKG4EU`o^PLg9Y:i75hN0
+S1
+R3
+w1745354649
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/ris_tb.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/ris_tb.sv
+!i122 218
+L0 1 238
+R4
+R5
+r1
+!s85 0
+31
+!s108 1745354662.000000
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/ris_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/ris_tb.sv|
+!i113 0
+R7
+R1
+vtop
+R2
+R13
+!i10b 1
+!s100 Sjd[2YhlhHl:SA:=Jn@Oe1
+IUF<[=;]>?KIl]CI3hN0c82
+S1
+R3
+w1745299869
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/top.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/top.sv
+!i122 216
+L0 2 86
+R4
+R5
+r1
+!s85 0
+31
+R14
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/top.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/top.sv|
+!i113 0
+R7
+R1
+vwb_sel_dff
+R2
+R15
+!i10b 1
+!s100 l;hBXHmjc=f33LSRI9[nJ1
+IKjUO;;Y;4P2`DJ<VSc@[81
+S1
+R3
+w1743243829
+8D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/wb_sel_dff.sv
+FD:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/wb_sel_dff.sv
+!i122 217
+L0 2 10
+R4
+R5
+r1
+!s85 0
+31
+R14
+!s107 D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/wb_sel_dff.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Questa_exp/Computer_Architecture_Lab/Pipeline+LSU/wb_sel_dff.sv|
+!i113 0
+R7
+R1

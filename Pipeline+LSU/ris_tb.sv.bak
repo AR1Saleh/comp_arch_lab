@@ -1,0 +1,223 @@
+module ris_tb;
+
+logic clk;
+logic rst_n;
+logic rst_n_pc;
+
+localparam period = 10;
+
+initial begin
+    clk = 1'b1;
+    rst_n = 1'b1;
+    rst_n_pc = 1'b0;
+end
+
+always #5 clk=~clk;
+
+top uut(
+    .clk(clk),
+    .rst_n(rst_n),
+    .rst_n_pc(rst_n_pc)
+);
+
+initial begin
+    $readmemh("D:\\Questa_exp\\Computer_Architecture_Lab\\Pipeline+LSU\\instr.txt" , uut.instr_mem.mem); 
+    $writememh("D:\\Questa_exp\\Computer_Architecture_Lab\\Pipeline+LSU\\instr_check.txt" , uut.instr_mem.mem);
+end
+
+initial begin
+    
+    #period;
+    rst_n_pc = 1'b1;
+	
+    uart_rx_data = 8'd4;
+    uart_rx_valid = 1'b0;
+    uart_tx_ready = 1'b0;
+    
+    $display("instruction: %h", uut.instr);
+    $display("pc_current: %b", uut.pc_current);
+    #period;
+    
+    $display("reg_data1: %d", uut.regfile.reg_data1);
+    $display("reg_data2: %d", uut.regfile.reg_data2);
+    $display("imm_val: %d", uut.imm_gen.imm_val);
+    
+    #period;
+    $display("reg_wr_data: %d", uut.regfile.wr_data);
+    $display("\n\n");
+
+    repeat(1)  begin
+        #period;
+        $display("instruction: %h", uut.instr);
+        $display("pc_current: %b", uut.pc_current);
+        $display("reg_data1: %d", uut.regfile.reg_data1);
+        $display("reg_data2: %d", uut.regfile.reg_data2);
+        $display("imm_val: %d", uut.imm_gen.imm_val);
+        $display("reg_wr_data: %d", uut.regfile.wr_data);        
+        $display("\n\n");    
+    end
+
+    #period;
+    uart_rx_valid = 1'b0;
+/*
+    #period;
+    $display("SUB x6, x5, x4: %b", uut.instr_mem.mem[1]);
+    $display("instruction: %b", uut.instr);
+    $display("pc_current: %b", uut.pc_current);
+    $display("x4: %d", uut.regfile.regfile[4]);
+    $display("x5: %d", uut.regfile.regfile[5]);
+    $display("x6: %d", uut.regfile.regfile[6]);
+    $display("alu_op: %b", uut.alu_op);
+    $display("op_code: %b", uut.controller.op_code);    
+    $display("\n\n");
+
+    #period;
+    $display("ANDI x8, x7, 15: %b", uut.instr_mem.mem[2]);
+    $display("instruction: %b", uut.instr);
+    $display("pc_current: %b", uut.pc_current);
+    $display("alu_data2: %b", uut.alu.data2);
+    $display("x7: %b", uut.regfile.regfile[7]);
+    $display("x8: %b", uut.regfile.regfile[8]);
+    $display("alu_op: %b", uut.alu_op);
+    $display("op_code: %b", uut.controller.op_code);   
+    $display("\n\n");
+
+    #period;
+    $display("SLTI x9, x2, 10: %b", uut.instr_mem.mem[3]);
+    $display("instruction: %b", uut.instr);
+    $display("pc_current: %b", uut.pc_current);
+    $display("alu_data2: %d", uut.alu.data2);
+    $display("x2: %d", uut.regfile.regfile[2]);
+    $display("x9: %b", uut.regfile.regfile[9]);
+    $display("alu_op: %b", uut.alu_op);
+    $display("op_code: %b", uut.controller.op_code);   
+    $display("\n\n");
+
+    #period;
+    $display("LW x10, 5(x7): %b", uut.instr_mem.mem[4]);
+    $display("instruction: %b", uut.instr);
+    $display("pc_current: %b", uut.pc_current);
+    $display("alu_data2: %d", uut.alu.data2);
+    $display("x7: %d", uut.regfile.regfile[7]);
+    $display("x10: %b", uut.regfile.regfile[10]);
+    $display("alu_op: %b", uut.alu_op);
+    $display("op_code: %b", uut.controller.op_code);   
+    $display("\n\n");
+
+    #period;
+    $display("LW x11, -4(x2): %b", uut.instr_mem.mem[5]);
+    $display("instruction: %b", uut.instr);
+    $display("pc_current: %b", uut.pc_current);
+    $display("alu_data2: %d", uut.alu.data2);
+    $display("x2: %d", uut.regfile.regfile[2]);
+    $display("x11: %b", uut.regfile.regfile[11]);
+    $display("alu_op: %b", uut.alu_op);
+    $display("op_code: %b", uut.controller.op_code);   
+    $display("\n\n");
+
+    #period;
+    $display("SW x1, 10(x4): %b", uut.instr_mem.mem[6]);
+    $display("instruction: %b", uut.instr);
+    $display("pc_current: %b", uut.pc_current);
+    $display("alu_data2: %d", uut.alu.data2);
+    $display("x4: %d", uut.regfile.regfile[4]);
+    $display("x1: %d", uut.regfile.regfile[1]);
+    $display("data_mem[12]: %d", uut.data_mem.data_mem[12]);
+    $display("alu_op: %b", uut.alu_op);
+    $display("op_code: %b", uut.controller.op_code);   
+    $display("\n\n");
+
+    #period;
+    $display("SW x5, -1(x2): %b", uut.instr_mem.mem[7]);
+    $display("instruction: %b", uut.instr);
+    $display("pc_current: %b", uut.pc_current);
+    $display("alu_data2: %d", uut.alu.data2);
+    $display("x2: %d", uut.regfile.regfile[2]);
+    $display("x5: %d", uut.regfile.regfile[5]);
+    $display("data_mem[8]: %d", uut.data_mem.data_mem[8]);
+    $display("alu_op: %b", uut.alu_op);
+    $display("op_code: %b", uut.controller.op_code);   
+    $display("\n\n");
+
+    #period;
+    $display("BGE x1, x12, 8: %b", uut.instr_mem.mem[8]);
+    $display("instruction: %b", uut.instr);
+    $display("pc_current: %b", uut.pc_current);
+    $display("alu_data2: %d", uut.alu.data2);
+    $display("x1: %d", uut.regfile.regfile[1]);
+    $display("x12: %d", uut.regfile.regfile[12]);
+    $display("alu_op: %b", uut.alu_op);
+    $display("op_code: %b", uut.controller.op_code);   
+    $display("\n\n");
+
+    #period;
+    $display("SLL x13, x1, x2: %b", uut.instr_mem.mem[9]);
+    $display("or");
+    $display("SRL x13, x1, x2: %b", uut.instr_mem.mem[10]);
+    $display("instruction    : %b", uut.instr);
+    $display("pc_current: %b", uut.pc_current);
+    $display("x1: %b", uut.regfile.regfile[1]);
+    $display("x2: %b", uut.regfile.regfile[2]);
+    $display("x13: %b", uut.regfile.regfile[13]);
+    $display("alu_op: %b", uut.alu_op);
+    $display("op_code: %b", uut.controller.op_code);    
+    $display("\n\n");    
+
+    #period;
+    $display("LUI x14, 0x12345: %b", uut.instr_mem.mem[11]);
+    $display("instruction     : %b", uut.instr);
+    $display("pc_current: %b", uut.pc_current);
+    $display("x14: %h", uut.regfile.regfile[14]);
+    $display("alu_data2: %h", uut.alu.data2);
+    $display("alu_op: %b", uut.alu_op);
+    $display("op_code: %b", uut.controller.op_code);    
+    $display("\n\n"); 
+
+    #period;
+    $display("AUIPC x15, 0x67890: %b", uut.instr_mem.mem[12]);
+    $display("instruction     : %b", uut.instr);
+    $display("pc_current: %b", uut.pc_current);
+    $display("x15: %h", uut.regfile.regfile[15]);
+    $display("alu_out: %h", uut.alu.alu_out);
+    $display("alu_data2: %h", uut.alu.data2);
+    $display("alu_data1: %h", uut.alu.data1);
+    $display("alu_op: %b", uut.alu_op);
+    $display("op_code: %b", uut.controller.op_code);    
+    $display("\n\n"); 
+
+    #period;
+    $display("JAL x26, 128: %b", uut.instr_mem.mem[13]);
+    $display("instruction: %b", uut.instr);
+    $display("address: %b", uut.instr_mem.addr);
+    $display("pc_current: %b", uut.pc_current);
+    $display("x26: %d", uut.regfile.regfile[26]);
+    $display("x26: %b", uut.regfile.regfile[26]);
+    $display("rd: %d", uut.regfile.wr_addr);
+    $display("alu_data1: %d", uut.alu.data1);
+    $display("alu_data2: %d", uut.alu.data2);
+    $display("alu_out: %d", uut.alu.alu_out);
+    $display("alu_out: %b", uut.alu.alu_out);
+    $display("mux_out_wb: %h", uut.mux_wb.mux_out);
+    $display("alu_op: %b", uut.alu_op);
+    $display("op_code: %b", uut.controller.op_code);   
+    $display("\n\n"); 
+
+    #period;
+    $display("JALR x27, x26, 0: %b", uut.instr_mem.mem[45]);
+    $display("instruction: %b", uut.instr);
+    $display("address: %b", uut.instr_mem.addr);
+    $display("pc_current: %b", uut.pc_current);
+    $display("x27: %d", uut.regfile.regfile[27]);
+    $display("rd: %d", uut.regfile.wr_addr);
+    $display("alu_data1: %d", uut.alu.data1);
+    $display("alu_data2: %d", uut.alu.data2);
+    $display("alu_out: %d", uut.alu.alu_out);
+    $display("alu_out: %b", uut.alu.alu_out);
+    $display("mux_out_wb: %h", uut.mux_wb.mux_out);
+    $display("alu_op: %b", uut.alu_op);
+    $display("op_code: %b", uut.controller.op_code);   
+    $display("\n\n");
+*/
+    //$stop;
+end
+endmodule
