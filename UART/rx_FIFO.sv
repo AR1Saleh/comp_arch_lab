@@ -1,48 +1,66 @@
-module UARTDR_Rx(
-    input logic clk,
-    input logic rst,
-    input logic in_ready, //fifo not full
-    input logic readreg_empty,
-    input logic break_error,
-    input logic framing_error,
-    input logic overflow_error,
-    input logic [7:0] sr_out,
-    output logic [7:0] fifo_out,
-    output logic out_ready, //fifo not empty
-    output logic fifo_full
+//==============================================================================
+// rx_fifo.sv
+// Circular FIFO (RX side) stores received bytes + error flags
+// DEPTH entries of {break_error, frame_error, data[7:0]}
+//==============================================================================
+module rx_fifo #(
+    parameter int DATA_WIDTH = 8,
+    parameter int DEPTH      = 64
+)(
+    input  logic                   clk,
+    input  logic                   rst_n,
+
+    // write-side: from RX shift register
+    input  logic [DATA_WIDTH-1:0]  data_in,
+    input  logic                   frame_error_in,
+    input  logic                   break_error_in,
+    input  logic                   wr_en,        // e.g., data_valid || break_valid
+
+    // read-side: to LSU / processor
+    input  logic                   rd_en,
+    output logic [DATA_WIDTH-1:0]  data_out,
+    output logic                   frame_error_out,
+    output logic                   break_error_out,
+    output logic                   empty,
+    output logic                   full,
+    output logic                   data_valid    // pulses when an entry dequeued
 );
 
-logic [10:0] fifo [3:0];
-logic [1:0] write_ptr;
-logic [1:0] read_ptr;
-logic [2:0] count;
+  // pointer widths
+  localparam int PTR_W = $clog2(DEPTH);
 
-assign fifo_out = fifo[read_ptr];
-assign fifo_full = (count == 4);
+  // each entry packs: [{break,frame}, data]
+  logic [DATA_WIDTH+1:0] mem [0:DEPTH-1];
+  logic [PTR_W-1:0]     wr_ptr, rd_ptr;
+  logic [$clog2(DEPTH+1)-1:0] count;
 
-always_ff @(posedge clk or posedge rst) begin
-    if (rst) begin
-        write_ptr <= 2'b00;
-        count <= 3'b000;
-        for (int i = 0; i < 4; i++) begin
-            fifo[i] <= 8'h00; //fifo is now empty
-        end
-    end else if (in_ready && (count < 4)) begin
-        fifo[write_ptr] <= {overflow_error, framing_error, break_error, sr_out};
-        write_ptr <= write_ptr + 1;
-        count <= count + 1;
+  // sequential logic
+  always_ff @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      wr_ptr <= '0;
+      rd_ptr <= '0;
+      count  <= '0;
+    end else begin
+      // write
+      if (wr_en && !full) begin
+        mem[wr_ptr] <= {break_error_in, frame_error_in, data_in};
+        wr_ptr      <= wr_ptr + 1;
+      end
+      // read pointer
+      if (rd_en && !empty) begin
+        rd_ptr <= rd_ptr + 1;
+      end
+      // update count
+      count <= count + (wr_en && !full) - (rd_en && !empty);
     end
-end
+  end
 
-assign out_ready = (count > 0) && readreg_empty;
-
-always_ff @(posedge clk or posedge rst) begin
-    if (rst) begin
-        read_ptr <= 2'b00;
-    end else if (out_ready) begin
-        read_ptr <= read_ptr + 1;
-        count <= count - 1;
-    end
-end
+  // combinational outputs
+  assign empty            = (count == 0);
+  assign full             = (count == DEPTH);
+  assign data_out         = mem[rd_ptr][DATA_WIDTH-1:0];
+  assign frame_error_out  = mem[rd_ptr][DATA_WIDTH];
+  assign break_error_out  = mem[rd_ptr][DATA_WIDTH+1];
+  assign data_valid       = (rd_en && !empty);
 
 endmodule
