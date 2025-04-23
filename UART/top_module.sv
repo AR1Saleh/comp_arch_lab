@@ -1,37 +1,70 @@
+//top module for uart
 
-module top(
-    input logic clk,
-    input logic rst
+module top_module (
+	input logic clk, rst
+
+);
+	//instantiating sub modules
+	
+	logic wr_en,busy,data_valid,baud_tick,f_e,b_e;
+	logic rd_en;
+	logic [7:0] data,lsu_data,rx_data,to_lsu_data;
+
+    baud_gen baud(
+        .clk(clk),
+        .rst(rst),
+        .tick(baud_tick)
     );
- 
- 
- wire in_ready_tx;
- wire sr_empty_tx;
- wire sr_out_tx;
- wire [7:0] uartdr_in;
- wire [7:0] uartdr_out;
- wire fifo_full_tx;
- wire fifo_out_ready_tx;
- wire in_ready_rx;
- wire readreg_empty;
- wire break_error;
- wire framing_error;
- wire overflow_error;
- wire [7:0] sr_out_rx;
- wire [7:0] fifo_out_rx;
- wire out_ready_rx;
- wire fifo_full_rx;
- wire sample_enable;
- wire [7:0] read_reg_out;
- wire [7:0] write_reg_in;
- 
- 
- register write_reg(.clk(clk),.reset(rst),.data_in(write_reg_in),.data_out(uartdr_in));
- UARTDR_Tx UARTDR_Tx(.clk(clk),.rst(rst),.in_ready(in_ready_tx),.sr_empty(sr_empty_tx),.in(uartdr_in),.out(uartdr_out),.out_ready(fifo_out_ready_tx),.fifo_full(fifo_full_tx)); 
- shift_reg_Tx shift_reg_Tx(.clk(clk),.rst(rst),.sr_empty(sr_empty_tx),.sr_out(sr_out_tx),.fifo_out_ready(fifo_out_ready_tx),.sr_in(uartdr_out));  
- shift_reg_Rx shift_reg_Rx(.clk(clk),.rst(rst),.rx_in(sr_out_tx),.sample_enable(sample_enable),.rx_data(sr_out_rx),.data_ready(in_ready_rx));
- UARTDR_Rx UARTDR_Rx(.clk(clk),.rst(rst),.in_ready(in_ready_rx),.readreg_empty(readreg_empty),.sr_out(sr_out_rx),.fifo_out(fifo_out_rx),.out_ready(out_ready_rx),.fifo_full(fifo_full_rx));
- baud_rate_gen baud_rate_gen(.clk(clk),.rst(rst),.sample_enable(sample_enable));
- register read_reg(.clk(clk),.reset(rst),.data_in(fifo_out_rx),.data_out(read_reg_out));
- 
+	
+	rx_shift_register rx_shift (
+		.clk(clk),
+		.rst_n(rst),
+		.baud_tick(baud_tick),
+		.sr_in(),
+		.data(rx_data),
+		.data_valid(),
+		.frame_error(),
+		.break_error(),
+		.break_valid()
+	);
+
+	rx_fifo r_fifo (
+		.clk(clk),
+		.rst_n(rst),
+		.data_in(rx_data),
+		.frame_error_in(f_e),
+		.break_error_in(b_e),
+		.wr_en(),
+		.rd_en(rd_en),
+		.data_out(to_lsu_data),
+		.frame_error_out(),
+		.break_error_out(),
+		.empty(),
+		.full(),
+		.data_valid()
+	);
+
+
+	tx_fifo t_fifo (
+		.clk(clk),
+		.rst_n(rst),
+		.buff_in(lsu_data),
+		.wr_en(wr_en),
+		.full(),
+		.tx_busy(busy),
+		.buff_out(data),
+		.empty(),
+		.data_valid(data_valid)
+	);
+
+	tx_shift_register tx_shift (
+		.clk(clk),
+		.baud_tick(baud_tick),
+		.rst(rst),
+		.data_valid(data_valid),
+		.data(data),
+		.busy(busy)	
+	);
+
+
 endmodule

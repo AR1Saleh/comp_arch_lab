@@ -1,45 +1,37 @@
-module shift_reg_Tx(
-    input logic [7:0] sr_in,
-    input logic fifo_out_ready,
-    output logic sr_out,
-    output logic sr_empty,
-    input logic clk, rst
+// Takes in 8 bit of data parallel data from fifo, attaches start and stop bit to it 
+// transmits the content serially at baud rate
+
+module tx_shift_register (
+	input logic [7:0] data,
+	input logic baud_tick,
+	input logic clk,rst,data_valid,
+	output logic sr_out,
+	output logic busy
 );
-logic [7:0] baud_counter;
-logic baud_en;
-logic [7:0] baud_divisor;
-
-logic [9:0] sr_reg;
-
-assign sr_empty = (sr_reg == 10'b1111111111);
-assign sr_out = sr_reg[0];
-
-always_ff @(posedge clk or posedge rst) begin
-    if (rst) begin
-        sr_reg <= 10'b1111111111;
-        
-        baud_counter <= 8'b0;
-        baud_en <= 1'b0;
-        baud_divisor <= 8'd139;
-    
-    end else begin
-        if (fifo_out_ready && sr_empty) begin
-            sr_reg <= {1'b1, sr_in, 1'b0};
-        end else if (!sr_empty && baud_en) begin
-            sr_reg <= {1'b1, sr_reg[9:1]};
+	logic [9:0] reg_out;
+	logic [3:0] count;
+	always_ff @(posedge baud_tick or posedge rst) begin
+        if (rst) begin
+            reg_out <= 10'b1111111111;  // Idle state
+            count <= 4'd0;
+            busy <= 1'b0;
+            sr_out <= 1'b1;  // Idle high
+        end else begin
+            if (count == 4'd0) begin
+                if (data_valid) begin
+                    reg_out <= {1'b1, data, 1'b0};  // [stop, data, start]
+                    count <= 4'd1;  // Start shifting
+                    busy <= 1'b1;
+                end else begin
+                    sr_out <= 1'b1;  // Idle high
+                    busy <= 1'b0;
+                end
+            end else begin
+                reg_out <= {1'b1, reg_out[9:1]};  // Shift right
+                sr_out <= reg_out[0];  // Output LSB
+                count <= (count == 4'd10) ? 4'd0 : count + 1;
+                busy <= (count < 4'd10);  // Busy until stop bit sent
+            end
         end
     end
-end
-
-always_ff @(posedge clk) begin
-    if (baud_counter == baud_divisor -1) begin
-        baud_counter <= 8'b0;
-        baud_en <= 1'b1;
-    end
-    else begin
-        baud_counter <= baud_counter + 1;
-        baud_en <= 1'b0;
-    end
-end
-
 endmodule
