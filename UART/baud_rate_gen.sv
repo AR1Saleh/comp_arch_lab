@@ -1,27 +1,23 @@
-module baud_rate_gen(
-    input logic clk,          
-    input logic rst,         
-    output logic sample_enable // Sampling enable signal (16x baud rate)
+
+module baud_gen #(
+    parameter DVSR = 326 
+)(
+    input  logic clk,
+    input  logic rst,
+    output logic tick
 );
 
-    // clk = 16 MHz and baud rate = 115200:
-    // divisor = (16,000,000) / (16 * 115200) = 8.681 = 8
-    localparam DIVISOR = 8;
-    logic [7:0] counter;
+logic [15:0] r_reg, r_next;  // Bit width depends on how big DVSR is
 
-    always_ff @(posedge clk or posedge rst) begin
-        if (rst) begin
-            counter <= 8'b0;
-            sample_enable <= 1'b0;
-        end else begin
-            if (counter == DIVISOR - 1) begin
-                counter <= 8'b0;
-                sample_enable <= 1'b1;
-            end else begin
-                counter <= counter + 1;
-                sample_enable <= 1'b0;
-            end
-        end
-    end
+always_ff @(posedge clk or posedge rst) begin
+    if (rst)
+        r_reg <= 0;
+    else
+        r_reg <= r_next;
+end
+
+assign r_next = (r_reg == DVSR) ? 0 : r_reg + 1;
+
+assign tick = (r_reg == DVSR);
 
 endmodule
